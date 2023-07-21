@@ -1,27 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sun
-  namespace: orftsmberlin
+  name: yes-1
+  namespace: tsmsingapore
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sun
+      app: yes-1
   template:
     metadata:
       labels:
-        app: sun
+        app: yes-1
         version: v1
     spec:
       containers:
-      - name: sun
+      - name: yes-1
         image: gcr.io/boreal-rain-256712/http-echo:latest
         env:
         - name: TEXT
-          value: 'Sun Berlin -> '
-        - name: NEXT
-          value: "rain.duckbank.de:8080"
+          value: ' Singapore yes '
         ports:
         - name: http
           containerPort: 8080
@@ -29,13 +27,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sun
-  namespace: orftsmberlin
+  name: yes-1
+  namespace: tsmsingapore
   labels:
-    app: sun
+    app: yes-1
 spec:
   selector:
-    app: sun
+    app: yes-1
   ports:
   - name: http
     port: 8080
