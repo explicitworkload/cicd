@@ -3,7 +3,7 @@
 ```
 1) Create cluster 1 control/3 worker best-effort-med/best-effort large (2 CPU/8 GB RAM)/(4 CPU/16 GB RAM)
 2) Enable Cluster (button => FluxCD will be installed on cluster) 
-3) Clusters -> {cluster name} -> Add-ons -> Git Repositories -> Add Git Repository -> Name= orfcicd, URL = https://github.com/ogelbric/cicd.git,  Brach = main
+3) Clusters -> {cluster name} -> Add-ons -> Git Repositories -> Add Git Repository -> Name= orfcicd, URL = https://github.com/explicitworkload/cicd.git, Branch = main
 4) Continuous Delivery -> Kustomizations -> application1 -> Path = /application1/pre-req, Prune = On
 ```
 
@@ -21,7 +21,7 @@ tanzu-continuousdelivery-resources   tanzu-auth        70m   True    Applied rev
 tanzu-continuousdelivery-resources   tanzu-namespace   70m   True    Applied revision: main/7d54a879444ebebb29eb09c4cb9f1a8e95f15498
 ```
 ```
-kubectl get svc -norfns
+kubectl get svc -n orfns
 ```
 ```
 NAME    TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
@@ -48,6 +48,7 @@ nginx-54f4568dfc-lhfw4   1/1     Running   0          18m
 # TSM yaml's
 
 ```
+This is how http-echo is sent on each mini-webserver, and later direct to the next.
 POD flow: weather -> sun -> rain -> yes
 ```
 # TMC integration
@@ -80,25 +81,24 @@ kubectl get virtualservices -A
 ```
 ```
 NAMESPACE      NAME       GATEWAYS           HOSTS   AGE
-orftsmberlin   rainsnow   ["acme-gateway"]   ["*"]   6m28s
-orftsmparis    rainsnow   ["acme-gateway"]   ["*"]   6m27s
+tsmsingapore   rainsnow   ["acme-gateway"]   ["*"]   6m28s
+tsmpaloalto    rainsnow   ["acme-gateway"]   ["*"]   6m27s
 ```
 ```
 kubectl get gw -A
 ```
 ```
 NAMESPACE      NAME           AGE
-orftsmberlin   acme-gateway   9m14s
-orftsmparis    acme-gateway   9m13s
+tsmsingapore   acme-gateway   9m14s
+tsmpaloalto    acme-gateway   9m13s
 ```
 
 # Test (TSM needs traffic to show the graph):
 
 ```
-curl `kubectl get svc -A | grep ingressgateway | awk '{ print $5 }' | head -1`/weatherparis
-curl `kubectl get svc -A | grep ingressgateway | awk '{ print $5 }' | head -1`/weatherberlin
+curl `kubectl get svc -A | grep ingressgateway | awk '{ print $5 }' | head -1`/weatherpaloalto
+curl `kubectl get svc -A | grep ingressgateway | awk '{ print $5 }' | head -1`/weathersingapore
 ```
 ```
-watch -d 'curl 192.168.2.106/weatherberlin; curl 192.168.2.106/weatherparis'
-watch -d 'curl 192.168.5.63/weatherberlin; curl 192.168.5.63/weatherparis'
+watch -n 1 -d 'http duckbank.de/weathersingapore; http paloalto.duckbank.de/weatherpaloalto'
 ```
