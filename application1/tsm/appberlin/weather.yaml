@@ -21,7 +21,7 @@ spec:
         - name: TEXT
           value: ' Weather Berlin -> '
         - name: NEXT
-          value: "sun.demo.acme.com:8080"
+          value: "sun.duckbank.de:8080"
         ports:
         - name: http
           containerPort: 8080

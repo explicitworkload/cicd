@@ -21,7 +21,7 @@ spec:
         - name: TEXT
           value: 'Rain Berlin -> '
         - name: NEXT
-          value: "yes-1.demo.acme.com:8080"
+          value: "yes-1.duckbank.de:8080"
         ports:
         - name: http
           containerPort: 8080
