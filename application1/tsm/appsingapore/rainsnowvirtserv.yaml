@@ -11,7 +11,7 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /weatherberlin
+        prefix: /weathersingapore
     route:
     - destination:
         host: weather
