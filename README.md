@@ -3,7 +3,7 @@
 ```
 1) Create cluster 1 control/3 worker best-effort-med/best-effort large (2 CPU/8 GB RAM)/(4 CPU/16 GB RAM)
 2) Enable Cluster (button => FluxCD will be installed on cluster) 
-3) Clusters -> {cluster name} -> Add-ons -> Git Repositories -> Add Git Repository -> Name= gohcicd, URL = https://github.com/explicitworkload/cicd.git, Branch = main
+3) Clusters -> {cluster name} -> Add-ons -> Git Repositories -> Add Git Repository -> Name= gohjcicd, URL = https://github.com/explicitworkload/cicd.git, Branch = main
 4) Continuous Delivery -> Kustomizations -> application1 -> Path = /application1/pre-req, Prune = On
 ```
 
