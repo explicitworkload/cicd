@@ -5,7 +5,7 @@ metadata:
   labels:
     name: nginx
   name: nginx
-  namespace: orfns
+  namespace: gohjns
 spec:
   ports:
     - port: 80
@@ -17,7 +17,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-  namespace: orfns
+  namespace: gohjns
 spec:
   selector:
     matchLabels:

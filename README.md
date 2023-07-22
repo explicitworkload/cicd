@@ -3,7 +3,7 @@
 ```
 1) Create cluster 1 control/3 worker best-effort-med/best-effort large (2 CPU/8 GB RAM)/(4 CPU/16 GB RAM)
 2) Enable Cluster (button => FluxCD will be installed on cluster) 
-3) Clusters -> {cluster name} -> Add-ons -> Git Repositories -> Add Git Repository -> Name= orfcicd, URL = https://github.com/explicitworkload/cicd.git, Branch = main
+3) Clusters -> {cluster name} -> Add-ons -> Git Repositories -> Add Git Repository -> Name= gohcicd, URL = https://github.com/explicitworkload/cicd.git, Branch = main
 4) Continuous Delivery -> Kustomizations -> application1 -> Path = /application1/pre-req, Prune = On
 ```
 
@@ -21,21 +21,21 @@ tanzu-continuousdelivery-resources   tanzu-auth        70m   True    Applied rev
 tanzu-continuousdelivery-resources   tanzu-namespace   70m   True    Applied revision: main/7d54a879444ebebb29eb09c4cb9f1a8e95f15498
 ```
 ```
-kubectl get svc -n orfns
+kubectl get svc -n gohjns
 ```
 ```
 NAME    TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
 nginx   LoadBalancer   10.96.61.129   192.168.2.104   80:30931/TCP   18m
 ```
 ```
-kubectl get deployments -n orfns
+kubectl get deployments -n gohjns
 ```
 ```
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE
 nginx   4/4     4            4           18m
 ```
 ```
-kubectl get pods -n orfns
+kubectl get pods -n gohjns
 ```
 ```
 NAME                     READY   STATUS    RESTARTS   AGE
